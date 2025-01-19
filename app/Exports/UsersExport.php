@@ -12,6 +12,11 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class UsersExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithMapping
 {
+    public function __construct(
+        public string $startDate,
+        public string $endDate
+    ){}
+
     public function styles(Worksheet $sheet)
     {
         return [
@@ -33,7 +38,7 @@ class UsersExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
 
     public function collection()
     {
-        return User::all();
+        return User::whereBetween('created_at', [$this->startDate, $this->startDate])->get();
     }
 
     public function map($user): array

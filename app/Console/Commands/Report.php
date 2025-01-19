@@ -27,7 +27,10 @@ class Report extends Command
      */
     public function handle()
     {
-        Excel::store(new UsersExport(), 'report.xlsx', 'public');
+        $startdate = $this->argument('startdate');
+        $enddate = $this->argument('enddate');
+
+        Excel::store(new UsersExport($startdate, $enddate), 'report.xlsx', 'public');
         return Command::SUCCESS;
     }
 }
