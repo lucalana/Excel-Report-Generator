@@ -89,10 +89,4 @@ This project demonstrates the use of Laravel's Sail environment to execute a com
 
 Feel free to fork this repository and submit pull requests. Ensure your contributions adhere to the Laravel coding standards.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 Enjoy working with this Laravel Sail project and generating reports seamlessly!
