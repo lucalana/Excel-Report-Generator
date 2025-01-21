@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Exports\UsersExport;
+use App\Jobs\GenerateReport;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -13,7 +14,7 @@ class Report extends Command
      *
      * @var string
      */
-    protected $signature = 'report {startdate} {enddate}';
+    protected $signature = 'report {startDate} {endDate}';
 
     /**
      * The console command description.
@@ -27,10 +28,10 @@ class Report extends Command
      */
     public function handle()
     {
-        $startdate = $this->argument('startdate');
-        $enddate = $this->argument('enddate');
+        $startDate = $this->argument('startDate'); 
+        $endDate = $this->argument('endDate');
 
-        Excel::store(new UsersExport($startdate, $enddate), 'report.xlsx', 'public');
+        GenerateReport::dispatch($startDate, $endDate);
         return Command::SUCCESS;
     }
 }

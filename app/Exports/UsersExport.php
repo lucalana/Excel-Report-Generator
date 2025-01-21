@@ -38,7 +38,7 @@ class UsersExport implements FromCollection, WithHeadings, ShouldAutoSize, WithS
 
     public function collection()
     {
-        return User::whereBetween('created_at', [$this->startDate, $this->startDate])->get();
+        return User::whereBetween('created_at', [$this->startDate, $this->endDate])->get();
     }
 
     public function map($user): array
